@@ -3,14 +3,16 @@
 $productCategory = mysqli_query($db,"select * from product_category");
 ?>
 <div class="container">
-	<h2>Product Categories</h2>
-	<table class="table">
+	<h2 class="mt-4 mb-4">Product Categories 
+    <small><a  href="product-category-create.php" class="btn btn-primary float-right">Create</a></small>
+  </h2>
+	<table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Name</th>
-      <th scope="col">Created At</th>
-      <th scope="col">Action</th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Created At</th>
+      <th class="text-center">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -22,9 +24,9 @@ $productCategory = mysqli_query($db,"select * from product_category");
       <th scope="row"><?php echo $row['id'];?></th>
       <td><?php echo $row['name'];?></td>
       <td><?php echo $row['created_at'];?></td>
-      <td>
-      	<a href="" class="btn btn-info">Edit</a>
-      	<a href="" class="btn btn-danger">Delete</a>
+      <td class="text-center">
+      	<a href="product-category-edit.php?id=<?php echo $row['id'];?>" class="btn btn-info">Edit</a>
+      	<a href="product-category-delete.php?id=<?php echo $row['id'];?>" class="btn btn-danger">Delete</a>
       </td>
     </tr>
 <?php } 
