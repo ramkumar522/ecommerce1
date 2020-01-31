@@ -1,6 +1,7 @@
 <?php require 'header.php';?>
 <?php 
-$product = mysqli_query($db,"select * from products");
+$product = mysqli_query($db,"select products.* ,product_category.name as category_name from products LEFT JOIN product_category
+ON products.category_id = product_category.id");
 ?>
 <div class="container">
 	<h2 class="mt-4 mb-4">Product 
@@ -12,6 +13,7 @@ $product = mysqli_query($db,"select * from products");
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Name</th>
+      <th scope="col">Category</th>
       <th scope="col">Created At</th>
       <th scope="col">Action</th>
     </tr>
@@ -24,6 +26,7 @@ $product = mysqli_query($db,"select * from products");
     <tr>
       <th scope="row"><?php echo $row['id'];?></th>
       <td><?php echo $row['name'];?></td>
+      <td><?php echo $row['category_name'];?></td>
       <td><?php echo $row['created_at'];?></td>
       <td>
       	<a href="product-edit.php?id=<?php echo $row['id'];?>" class="btn btn-info">Edit</a>
